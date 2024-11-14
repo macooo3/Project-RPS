@@ -42,15 +42,14 @@ function playRound(humanChoice, computerChoice) {
     console.log(`You lose ${humanChoice} loses to ${computerChoice}`);
   } else if (newHum > newComp) {
     console.log(`You win ${humanChoice} beats ${computerChoice}`);
-    console.log(newHum, newComp, humanChoice, computerChoice);
+
     return hWins++;
   } else if (newHum < newComp) {
     console.log(`You lose ${humanChoice} loses to ${computerChoice}`);
-    console.log(newHum, newComp, humanChoice, computerChoice);
+
     return pcWins++;
   } else {
     console.log(`You tie ${humanChoice} ties to ${computerChoice}`);
-    console.log(newHum, newComp, humanChoice, computerChoice);
   }
 }
 
