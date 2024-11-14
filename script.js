@@ -22,29 +22,35 @@ const getHumanChoice = function () {
   return lowerAns;
 };
 
+const choiceConv = function (choice) {
+  if (choice === "rock") {
+    return 1;
+  } else if (choice === "paper") {
+    return 2;
+  } else {
+    return 3;
+  }
+};
 // take choices of both and change them to nums after check who wins
 function playRound(humanChoice, computerChoice) {
-  const choiceConv = function (choice) {
-    if (choice === "rock") {
-      return 1;
-    } else if (choice === "paper") {
-      return 2;
-    } else {
-      return 3;
-    }
-  };
-
   let newHum = choiceConv(humanChoice);
   let newComp = choiceConv(computerChoice);
 
-  if (newHum > newComp) {
+  if (newHum === 1 && newComp === 3) {
     console.log(`You win ${humanChoice} beats ${computerChoice}`);
+  } else if (newHum === 3 && newComp === 1) {
+    console.log(`You lose ${humanChoice} loses to ${computerChoice}`);
+  } else if (newHum > newComp) {
+    console.log(`You win ${humanChoice} beats ${computerChoice}`);
+    console.log(newHum, newComp, humanChoice, computerChoice);
     return hWins++;
   } else if (newHum < newComp) {
     console.log(`You lose ${humanChoice} loses to ${computerChoice}`);
+    console.log(newHum, newComp, humanChoice, computerChoice);
     return pcWins++;
   } else {
     console.log(`You tie ${humanChoice} ties to ${computerChoice}`);
+    console.log(newHum, newComp, humanChoice, computerChoice);
   }
 }
 
@@ -59,7 +65,6 @@ const playGame = function () {
     const humanSelection = getHumanChoice();
     const computerSelection = getComputerChoice();
     playRound(humanSelection, computerSelection);
-    rounds = i;
   }
   if (hWins > pcWins) {
     console.log("you win");
